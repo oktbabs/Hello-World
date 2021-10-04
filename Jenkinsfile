@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                echo 'Checking out code'
+               git credentialsId: 'github', url: 'https://github.com/oktbabs/Hello-World.git'
             }
         }
         stage('Build') {
             steps {
-                echo 'Building Artefacts'
+                sh 'mvn clean package'
             }
         }
         stage('Execute Unit Tests') {
